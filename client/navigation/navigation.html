@@ -1,0 +1,59 @@
+<template name="navigation">
+	<div class="navbar navbar-default">
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="#">MegaEvent</a>
+	        <ul class="nav navbar-nav">
+	            <li><a href="{{pathFor 'home'}}">Home</a></li>
+		      <li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">EventViewer <b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+    			  <li><a href="{{pathFor 'ActiveEvents'}}">ActiveEvents</a></li>
+				  <li><a href="{{pathFor 'CompleteEvents'}}">CompleteEvents</a></li>
+  				  <li><a href="{{pathFor 'PlanningEvents'}}">PlanningEvents</a></li>
+		        </ul>
+				
+		      </li>
+	        	<li><a href="{{pathFor 'LiveFeed'}}">LiveFeed</a></li>				
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Create <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="{{pathFor 'CreateEvent'}}">Events</a></li>
+			          <li><a href="#">Tasks</a></li>
+			          <li><a href="#">Particpants</a></li>
+			        </ul>
+			      </li>
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modify <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+			          <li class="dropdown-header">Update Items</li>
+					  <li><a href="#">Events</a></li>
+			          <li><a href="#">Tasks</a></li>
+			          <li><a href="#">Particpants</a></li>
+			          <li class="divider"></li>
+					  <li class="dropdown-header">Delete Items</li>
+			          <li><a href="#">Delete Tasks</a></li>
+			          <li><a href="#">Delete Events</a></li>
+			          <li><a href="#">Delete Participants</a></li>
+				    </ul>
+			      </li>
+				  <li class="divider"></li>
+            	  <li><a href="{{pathFor 'about'}}">About</a></li>
+			 </ul>
+	    </div>
+	</div>
+
+<div class="navbar navbar-fixed-bottom">
+        <ul class="nav nav-pills">
+			<li><a href="#">Events Active/Inactive/Complete/Planning<span class="badge">{{active_event_count}}</span><a></a>
+											   <span class="badge">{{inactive_event_count}}</span><a></a>
+  											   <span class="badge">{{complete_event_count}}</span><a></a>
+											   <span class="badge">{{planning_event_count}}</span></a></li>
+			<li><a href="#">Active Tasks<span class="badge">91</span></a></li>
+			<li><a href="#">Active Participants<span class="badge">77</span></a></li>
+			<li><a href="#">Active Observers<span class="badge">12</span></a></li>
+		</ul>
+</div>
+	
+</template>

@@ -1,0 +1,11 @@
+<template name="Participant">
+	<div class="Participant">
+		<div class='col-xs-3'>
+			<select class="form-control selectedparticipant">
+		{{#each all_persons}}
+			<option>{{name}}</option>
+		{{/each}}
+		</select>
+		</div>
+	</div>
+</template>

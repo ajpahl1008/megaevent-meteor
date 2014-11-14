@@ -1,0 +1,57 @@
+<template name="CreateEvent">
+	<div class="CreateEvent">
+		<div class="page-header">
+			<h1>Create Event</h1>
+		</div>
+		
+		<div class="well">
+			
+			<div class="row">
+				<i class="btn glyphicon glyphicon-remove pull-right cancelEventCreate"></i><p></p>
+				<p>Event Name: <input class="span1-12 eventName" type="text" placeholder="Event Name" ></p>
+			</div>
+
+			<div class="row">
+				<p>Event Start Date:
+					<div class='col-sm-3'>
+			       		<div class="form-group">
+			  			  <div class='input-group date' id='datepicker'>
+			                	  <input type='text' class="col-sm-12 startDateMarker" data-date-format="MM/DD/YYYY"/>
+			                   	 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+			                    	</span>
+			               	</div>
+			           	</div>
+			   		</div>
+				</p>
+			</div>
+			
+			<div class="row">
+				<p>Event Start Time:
+					<div class='col-sm-3'>
+			       		<div class="form-group">
+			  			  <div class='input-group date' id='timepicker'>
+			                	  <input type='text' class="col-sm-12 startTimeMarker"/>
+			                   	 <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+			                    	</span>
+			               	</div>
+			           	</div>
+			   		</div>
+				</p>
+			</div>
+
+			<div class="row">
+			<p>Event Owner:
+ 			   	{{>Participant}}
+			</p>
+			</div>
+
+	
+	</div> 
+	
+	<div class="well well-sm bluewell">
+	<i type="submit" class="btn glyphicon glyphicon-floppy-disk saveNewEvent"></i>
+	</div>
+						
+   </div>
+</template>
+	
