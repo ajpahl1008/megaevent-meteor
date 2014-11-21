@@ -1,14 +1,17 @@
 if (Meteor.isClient) {
+	
 	Template.Event.events({
 		'click .trashevent': function(evt,tmpl) {
+			Session.set('delete_eventId',tmpl.data._id);
 			 $('#confirm-modal').modal('show');
 		},
-			'click .confirm-yes-button': function(evt, tmpl) {
-	    	MegaEvents.remove({_id: this._id});
-	    	$('#confirm-modal').on('hidden.bs.modal', function() {
-	            //Router.go('/home');
+			'click .delete-yes-button': function(evt, tmpl) {
+	    	MegaEvents.remove({_id: Session.get('delete_eventId')});
+			
+	    	$('.confirmModal').on('hidden.bs.modal', function() {
 	        }).modal('hide');
-	    
+	    	Session.set('delete_eventId',null);
+		
 		},
 		   'dblclick .eventName': function(evt, tmpl) {
 		   Session.set('editing_event', true);
@@ -25,9 +28,10 @@ if (Meteor.isClient) {
 		}	
 	});
 
-	Template.Event.editing_event = function() {
-		return Session.get('editing_event');
-	}
-	
+	Template.Event.helpers({
+		editing_event: function() {
+				return Session.get('editing_event');
+			}
+	});	
 
 }
