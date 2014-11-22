@@ -3,9 +3,6 @@ if (Meteor.isClient) {
 	Template.Event.events({
 		'click .trashevent': function(evt,tmpl) {
 			Session.set('delete_eventId',tmpl.data._id);
-		 Session.set('targeted_delete_event',targetEvent.eventName);
-			console.log("DEBUG: Deleting Event: " + tmpl.data._id);
-			console.log("DEBUG: Targeted Event Name: " + Session.get('targeted_delete_event'));
 			 $('.confirmModal').modal('show');
 		},
 			'click .delete-yes-button': function(evt, tmpl) {
@@ -42,14 +39,9 @@ if (Meteor.isClient) {
 			},
 		targeted_delete_event: function() {
    		 		var targetEvent = MegaEvents.findOne(Session.get('delete_eventId'));
-			
 		        return targetEvent.eventName;
 			}
 			
 	});	
-	
-	// Template.Event.targeted_item = function() {
-// 			return MegaEvents.find({_id: Session.get('delete_eventId')},{fields: {'eventName':1}});
-// 	};
 
 }
