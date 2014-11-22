@@ -16,9 +16,9 @@ if (Meteor.isClient) {
 			var eventName = tmpl.find('.eventName').value;
 			var startDate = tmpl.find('.startDateMarker').value;
 			var startTime = tmpl.find('.startTimeMarker').value;
-			var eventOwner = tmpl.find('.selectedparticipant').value;
+			var eventOwner = tmpl.find('.selectedParticipant').value;
 			//alert("name: " + eventName + ", startDate: " + startDateTime + ", owner: " + eventOwner);
-			MegaEvents.insert({name: eventName, startDate: startDate, startTime: startTime, owner: eventOwner, state: "planning", complete:0, active:0, unstarted:100})
+			MegaEvents.insert({eventName: eventName, startDate: startDate, startTime: startTime, owner: eventOwner, state: "planning", complete:0, active:0, unstarted:100})
 			clearDeck(tmpl);
 			Router.go('/PlanningEvents');
 		}
@@ -29,7 +29,7 @@ if (Meteor.isClient) {
 		tmpl.find('.eventName').value = '';
 		tmpl.find('.startDateMarker').value = '';
 		tmpl.find('.startTimeMarker').value = '';
-		tmpl.find('.selectedparticipant').value ='';
+		tmpl.find('.selectedParticipant').value ='';
 
 	}
 	
