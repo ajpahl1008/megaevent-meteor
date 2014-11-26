@@ -1,11 +1,9 @@
 <template name="Participant">
 	<div class="Participant">
-		<div class='col-xs-3'>
-			<select class="form-control selectedParticipant">
-		{{#each all_persons}}
-			<option>{{participantName}}</option>
-		{{/each}}
-		</select>
-		</div>
+			<select class="col-xs-10 list-group selectedParticipant">
+				{{#each all_persons}}
+					<option>{{participantName}}</option>
+				{{/each}}
+			</select>
 	</div>
 </template>

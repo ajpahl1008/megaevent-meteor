@@ -36,11 +36,15 @@ if (Meteor.isClient) {
 	Template.Event.helpers({
 		editing_event: function() {
 				return Session.get('editing_event');
-			},
+		},
 		targeted_delete_event: function() {
-   		 		var targetEvent = MegaEvents.findOne(Session.get('delete_eventId'));
-		        return targetEvent.eventName;
-			}
+	 		var targetEvent = MegaEvents.findOne(Session.get('delete_eventId'));
+			if (!targetEvent.eventName.length > 0) {
+				return targetEvent = "Unamed Event";
+			} 
+	        return targetEvent.eventName;	
+					
+		}
 			
 	});	
 
