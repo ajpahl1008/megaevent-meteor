@@ -1,0 +1,10 @@
+<template name="RelatedEvent">
+	<div class="RelatedEvent">
+			<select class="col-xs-10 list-group selectedEvent">
+				<option class="list-group-item"></option>
+				{{#each all_planned_events}}
+					<option>{{eventName}}</option>
+				{{/each}}
+			</select>
+	</div>
+</template>
