@@ -2,17 +2,40 @@ MegaEvents = new Meteor.Collection("MegaEvents");
 MegaTasks = new Meteor.Collection("MegaTasks");
 MegaParticipants = new Meteor.Collection("MegaParticipants");
 
+findEventID = function(eventName) {
+	var megaevent = MegaEvents.findOne({eventName: eventName});
+		return megaevent._id;
+}
+
+findParticipantID = function(idName) {
+	var participant = MegaParticipants.find({participantName: idName});
+	return participant._id;
+}
 
 reloadTestData = function() {
-	// Clears out the entire collection(s) -- DEBUG: SHOULD BE COMMENTED OUT!!!
+	// DEBUG-AJP: Clears out the entire collection(s) -- DEBUG: SHOULD BE COMMENTED OUT!!!
 	var globalObject=Meteor.isClient?window:global;
 	    for(var property in globalObject){
 	        var object=globalObject[property];
 	        if(object instanceof Meteor.Collection){
 	            object.remove({});
-	        }
-	    }
-
+	     }
+	}
+	
+	if (MegaParticipants.find().count() === 0) {
+		var sysadminParticipants = ["ID2","ID3","ID4"];
+		console.log("Adding Simulated Participants - SysAdmins");
+		for (var i = 0; i < sysadminParticipants.length; i++) {
+			MegaParticipants.insert({participantName: sysadminParticipants[i], role:"sysadmin", phone:"555-1212", email:"dude@company.com"});
+		}
+	
+		var ownersParticipants = ["ID5","ID7","ID8"];
+		console.log("Adding Simulated Participants - owners");
+		for (var i = 0; i < ownersParticipants.length; i++) {
+			MegaParticipants.insert({participantName: ownersParticipants[i], role:"owners", phone:"555-1212", email:"dude@company.com"});
+		}
+	}
+	
 	if (MegaEvents.find().count() === 0) {
 		var activeEvents = ["Event1","Event2","Event3"];
 		var inactiveEvents = ["Event4","Event5","Event6"];
@@ -22,7 +45,11 @@ reloadTestData = function() {
 		
 		console.log("Adding Simulated Events-Active");
 		for (var i = 0; i < activeEvents.length; i++) {
-			MegaEvents.insert({eventName: activeEvents[i], startDate:"12-12-1201", startTime:"12:00:00.000",  state:"active", complete:10, active:10, unstarted:12});
+			me_id = MegaEvents.insert({eventName: activeEvents[i], startDate:"12-12-1201", startTime:"12:00:00.000",  state:"active", complete:10, active:10, unstarted:12});
+			
+			MegaTasks.insert({taskName: 'task1', eventID: me_id, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+			                  taskExecutor: findParticipantID("ID1"),taskValidator: findParticipantID("ID2") ,taskStatus: "open"});
+			
 		}
 		console.log("Adding Simulated Events - Inactive");
 		for (var i = 0; i < inactiveEvents.length; i++) {
@@ -38,19 +65,5 @@ reloadTestData = function() {
 		}
 	
 	} 
-	
-	if (MegaParticipants.find().count() === 0) {
-		var sysadminParticipants = ["ID2","ID3","ID4"];
-		console.log("Adding Simulated Participants - SysAdmins");
-		for (var i = 0; i < sysadminParticipants.length; i++) {
-			MegaParticipants.insert({participantName: sysadminParticipants[i], role:"sysadmin", phone:"555-1212", email:"dude@company.com"});
-		}
-	
-		var ownersParticipants = ["ID5","ID7","ID8"];
-		console.log("Adding Simulated Participants - owners");
-		for (var i = 0; i < ownersParticipants.length; i++) {
-			MegaParticipants.insert({participantName: ownersParticipants[i], role:"owners", phone:"555-1212", email:"dude@company.com"});
-		}
-	}
 	
 }

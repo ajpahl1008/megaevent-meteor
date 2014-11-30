@@ -7,3 +7,25 @@
 			</select>
 	</div>
 </template>
+
+<template name="Validator">
+	<div class="Validator">
+			<select class="col-xs-10 list-group selectedValidator">
+				<option class="list-group-item"></option>
+				{{#each all_persons}}
+					<option>{{participantName}}</option>
+				{{/each}}
+			</select>
+	</div>
+</template>
+
+<template name="Executor">
+	<div class="Executor">
+			<select class="col-xs-10 list-group selectedExecutor">
+				<option class="list-group-item"></option>
+				{{#each all_persons}}
+					<option>{{participantName}}</option>
+				{{/each}}
+			</select>
+	</div>
+</template>

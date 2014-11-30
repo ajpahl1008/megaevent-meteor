@@ -39,13 +39,17 @@ if (Meteor.isClient) {
 		},
 		targeted_delete_event: function() {
 	 		var targetEvent = MegaEvents.findOne(Session.get('delete_eventId'));
-			if (!targetEvent.eventName.length > 0) {
+			if (((typeof targetEvent != "undefined") && (typeof targetEvent.valueOf() == "object")) && (targetEvent.eventName.length > 0 )) {
+				return targetEvent.eventName;	
+			} else {
 				return targetEvent = "Unamed Event";
-			} 
-	        return targetEvent.eventName;	
+			}
+	        
 					
 		}
-			
-	});	
-
+		// pending_tasks: function(evt,tmpl) {
+	// 		MegaTasks.find({eventID: this._id}).count();
+	// 	}
+	});
+	
 }

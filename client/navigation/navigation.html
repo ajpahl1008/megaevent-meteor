@@ -20,7 +20,7 @@
 			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Create <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="{{pathFor 'CreateEvent'}}">Events</a></li>
-			          <li><a href="#">Tasks</a></li>
+			          <li><a href="{{pathFor 'CreateTask'}}">Tasks</a></li>
 			          <li><a href="#">Particpants</a></li>
 			        </ul>
 			      </li>
@@ -51,6 +51,7 @@
   											   <span class="badge">{{complete_event_count}}</span><a></a>
 											   <span class="badge">{{planning_event_count}}</span></a></li>
 			<li><a href="#">Active Tasks<span class="badge">91</span></a></li>
+			<li><a href="#">Planned Tasks<span class="badge">{{planning_task_count}}</span></a></li>
 			<li><a href="#">Active Participants<span class="badge">77</span></a></li>
 			<li><a href="#">Active Observers<span class="badge">12</span></a></li>
 		</ul>
