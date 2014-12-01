@@ -15,7 +15,7 @@ if (Meteor.isClient) {
 		'click .saveNewTask': function(evt, tmpl) {
 				var taskName = tmpl.find('.taskName').value;
 	     		var taskEvent = tmpl.find('.selectedEvent').value;
-				var taskEventId = findEventID(taskEvent);
+				var taskEventId = findEventByName(taskEvent);
 				var startTaskDate = tmpl.find('.startTaskDate').value;
 				var startTaskTime = tmpl.find('.startTaskTime').value;
 				var taskDetails = tmpl.find('.taskDetails').value;

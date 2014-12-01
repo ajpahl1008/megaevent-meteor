@@ -19,12 +19,13 @@
 				</div>
 				
 				<ul class="nav nav-pills pull-right">
-				  <li><a href="#">Pending Tasks<span class="badge">{{pending_tasks}}</span></a></li>
+					<a href="#">Pending<span class="badge">{{pending_tasks}}</span></a>
+					<a href="#">Completed<span class="badge">{{completed_tasks}}</span></a>
+					<a href="#">Active<span class="badge">{{active_tasks}}</span></a>
 				</ul>
-
-				<h6>{{complete}}% Complete</h6>
-				<h6>Start Date: {{startDate}}</h6>
-				<h6>Start Time: {{startTime}}</h6>
+				<a href="#">Complete:<span class="badge">{{complete}}%</span></a>
+				<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
+				<a href="#">Start Time:<span class="badge">{{startTime}}</span></a>
 			</div>
 		</div>
 </div>

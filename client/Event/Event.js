@@ -43,13 +43,26 @@ if (Meteor.isClient) {
 				return targetEvent.eventName;	
 			} else {
 				return targetEvent = "Unamed Event";
-			}
-	        
-					
-		}
-		// pending_tasks: function(evt,tmpl) {
-	// 		MegaTasks.find({eventID: this._id}).count();
-	// 	}
+			}					
+		},
+			completed_tasks: function() {
+				var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'});
+				console.log("Completed: " + tasks.count());
+				return tasks.count();
+			},
+			pending_tasks: function() {
+				var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'pending'});
+				console.log("Pending Length: " + tasks.count());
+				return tasks.count();
+			},
+			active_tasks: function() {
+				var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'active'});
+				console.log("Active Length: " + tasks.count());
+				return tasks.count();
+			},
+			
+			
 	});
 	
 }
+
