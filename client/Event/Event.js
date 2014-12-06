@@ -45,21 +45,37 @@ if (Meteor.isClient) {
 				return targetEvent = "Unamed Event";
 			}					
 		},
-			completed_tasks: function() {
-				var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'});
-				console.log("Completed: " + tasks.count());
-				return tasks.count();
-			},
-			pending_tasks: function() {
-				var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'pending'});
-				console.log("Pending Length: " + tasks.count());
-				return tasks.count();
-			},
-			active_tasks: function() {
-				var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'active'});
-				console.log("Active Length: " + tasks.count());
-				return tasks.count();
-			},
+		
+		complete_percentage: function() {
+			var percentage; 
+			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();
+			var totalComplete = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
+			var totalCanceled = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
+			var totalTaskCount = totalTaskCount - totalCanceled;
+			percentage = Math.abs(( totalComplete / totalTaskCount) * 100);
+			return Math.floor(percentage);
+		},
+		
+		completed_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'});
+			//console.log("Completed: " + tasks.count());
+			return tasks.count();
+		},
+		pending_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id}, {$or: [ {taskStatus: 'planning', taskStatus:'pending'}]});
+			//console.log("Pending Length: " + tasks.count());
+			return tasks.count();
+		},
+		active_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'active'});
+			//console.log("Active Length: " + tasks.count());
+			return tasks.count();
+		},
+		canceled_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'});
+			//console.log("Active Length: " + tasks.count());
+			return tasks.count();
+		}
 			
 			
 	});

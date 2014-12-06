@@ -4,28 +4,27 @@
 		<div class="col-xs-3 ">
 			<div class="well">
 				{{#if editing_event}}
-				<input class="eventtext" type="text" name="eventTitle" value='{{eventName}}'/>
+					<input class="eventtext" type="text" name="eventTitle" value='{{eventName}}'/>
 				{{else}}
-				<h5 id="eventName" class="eventName">{{eventName}}<i class="glyphicon glyphicon-trash pull-right trashevent" data-toggle="modal" data-target="#smallModal"></i></h5>
+					<h5 id="eventName" class="eventName">{{eventName}}<i class="glyphicon glyphicon-trash pull-right trashevent" data-toggle="modal" data-target="#smallModal"></i></h5>
 				{{/if}}
 			</div>
 		</div>	
 		<div class="col-xs-9">
 			<div class="well">
 				<div class="progress">
-					<div class="progress-bar progress-bar-success" style="width: {{complete}}%"></div>
-					<div class="progress-bar progress-bar-warn" style="width: {{active}}%"></div>
-					<div class="progress-bar progress-bar-danger" style="width: {{unstarted}}%"></div>
+					<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{complete_percentage}}%">{{complete_percentage}}% Complete</div>
 				</div>
 				
-				<ul class="nav nav-pills pull-right">
+				<ul class="nav nav-pills">
+				    <a href="#">Complete:<span class="badge">{{complete_percentage}}%</span></a>
 					<a href="#">Pending<span class="badge">{{pending_tasks}}</span></a>
 					<a href="#">Completed<span class="badge">{{completed_tasks}}</span></a>
 					<a href="#">Active<span class="badge">{{active_tasks}}</span></a>
+					<a href="#">Canceled<span class="badge">{{canceled_tasks}}</span></a>
 				</ul>
-				<a href="#">Complete:<span class="badge">{{complete}}%</span></a>
 				<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
-				<a href="#">Start Time:<span class="badge">{{startTime}}</span></a>
+				<a href="#">Start Time:<span class="badge">{{startTime}}</span></a> 
 			</div>
 		</div>
 </div>
