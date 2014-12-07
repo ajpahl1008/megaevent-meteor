@@ -57,24 +57,24 @@ if (Meteor.isClient) {
 		},
 		
 		completed_tasks: function() {
-			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'});
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
 			//console.log("Completed: " + tasks.count());
-			return tasks.count();
+			return tasks;
 		},
 		pending_tasks: function() {
-			var tasks = MegaTasks.find({eventID: this._id}, {$or: [ {taskStatus: 'planning', taskStatus:'pending'}]});
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus:'pending'}).count();
 			//console.log("Pending Length: " + tasks.count());
-			return tasks.count();
+			return tasks;
 		},
 		active_tasks: function() {
-			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'active'});
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'active'}).count();
 			//console.log("Active Length: " + tasks.count());
-			return tasks.count();
+			return tasks;
 		},
 		canceled_tasks: function() {
-			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'});
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
 			//console.log("Active Length: " + tasks.count());
-			return tasks.count();
+			return tasks;
 		}
 			
 			

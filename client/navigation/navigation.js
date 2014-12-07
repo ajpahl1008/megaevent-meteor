@@ -15,8 +15,8 @@ if (Meteor.isClient) {
 		planning_event_count: function() {
 			return MegaEvents.find({state:'planning'}).count();
 		},
-		planning_task_count: function() {
-			return MegaTasks.find({taskStatus: 'planning'}).count();
+		pending_task_count: function() {
+			return MegaTasks.find({taskStatus: 'pending'}).count();
 		}
 		
 	});
