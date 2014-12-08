@@ -6,6 +6,9 @@ if (Meteor.isClient) {
 			 $('.confirmModal').modal('show');
 		},
 			'click .delete-yes-button': function(evt, tmpl) {
+			
+			removeEventsTasks(Session.get('delete_eventId'));
+			
 			MegaEvents.remove({_id: Session.get('delete_eventId')});
 			$('.confirmModal').on('hidden.bs.modal', function() {
 	        }).modal('hide');
@@ -80,5 +83,13 @@ if (Meteor.isClient) {
 			
 	});
 	
+	 removeEventsTasks = function(eventId) {
+		 var targetTasks = MegaTasks.find({eventID: eventId}).fetch();
+ 				targetTasks.forEach(function(row) {
+					MegaTasks.remove({_id: row._id});
+					console.log("Removing Task:  " + row._id);
+ 				});
+		
+	}
 }
 

@@ -18,7 +18,7 @@ if (Meteor.isServer) {
    				  loadTasks(67, 'active', 'completed');
    				  loadTasks(9, 'active', 'canceled');
   				  loadTasks(50, 'complete', 'completed');
-				  
+   				  loadTasks(3, 'complete', 'canceled');
 			  }			  
 		    });
 	
