@@ -1,9 +1,8 @@
 <template name="navigation">
 	<div class="navbar navbar-default navbar-fixed-top">
 	    <div class="navbar-header">
-	        <a class="navbar-brand" href="#">MegaEvent</a>
-	        <ul class="nav navbar-nav">
-	            <li><a href="{{pathFor 'home'}}">Home</a></li>
+	        <a class="navbar-brand" href="{{pathFor 'home'}}">MegaEvent</a>
+	        <ul class="nav navbar-nav navbar-left">
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">EventViewer <b class="caret"></b></a>
 		        <ul class="dropdown-menu">
@@ -11,11 +10,10 @@
 				  <li><a href="{{pathFor 'CompleteEvents'}}">CompleteEvents</a></li>
   				  <li><a href="{{pathFor 'PlanningEvents'}}">PlanningEvents</a></li>
 		        </ul>
-				
 		      </li>
 	        	<li><a href="{{pathFor 'LiveFeed'}}">LiveFeed</a></li>				
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-left">
 			      <li class="dropdown">
 			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Create <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
@@ -38,10 +36,12 @@
 			          <li><a href="#">Delete Participants</a></li>
 				    </ul>
 			      </li>
-				  <li class="divider"></li>
-            	  <li><a href="{{pathFor 'about'}}">About</a></li>
 			 </ul>
+			 			
 	    </div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="{{pathFor 'about'}}">About </a></li>
+		</ul>
 	</div>
 
 <div class="navbar navbar-default navbar-fixed-bottom">
