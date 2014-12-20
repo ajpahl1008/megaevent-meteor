@@ -58,33 +58,33 @@ reloadTestData = function() {
 		console.log("Adding Simulated Events - Active");
 		for (var i = 0; i < activeEvents.length; i++) {
 			var me_aid = MegaEvents.insert({eventName: activeEvents[i], startDate:"12-12-1201", startTime:"12:00:00",  state:"active"});
-			MegaTasks.insert({taskName: 'task1', eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+			MegaTasks.insert({taskName: me_aid+1, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "active"});
-			MegaTasks.insert({taskName: 'task2', eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+			MegaTasks.insert({taskName: me_aid+2, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "completed"});
-			MegaTasks.insert({taskName: 'task3', eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+			MegaTasks.insert({taskName: me_aid+3, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
-			MegaTasks.insert({taskName: 'task4', eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+			MegaTasks.insert({taskName: me_aid+4, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "canceled"});
 		}
 		console.log("Adding Simulated Events - Complete");
 		for (var i = 0; i < completeEvents.length; i++) {
 		  	var me_cid = MegaEvents.insert({eventName: completeEvents[i], startDate:"12-12-1023", startTime:"12:00:00",  state:"complete"});
-		  		MegaTasks.insert({taskName: 'task1', eventID: me_cid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+		  		MegaTasks.insert({taskName: me_cid+1, eventID: me_cid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
             		  			  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "completed"});
-				MegaTasks.insert({taskName: 'task2', eventID: me_cid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+				MegaTasks.insert({taskName: me_cid+2, eventID: me_cid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
                                   taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "completed"});
-		        MegaTasks.insert({taskName: 'task3', eventID: me_cid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+		        MegaTasks.insert({taskName: me_cid+3, eventID: me_cid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
                                   taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "canceled"});
 		}
 		console.log("Adding Simulated Events - Planning");
 		for (var i = 0; i < planningEvents.length; i++) {
 			var me_pid = MegaEvents.insert({eventName: planningEvents[i], startDate:"12-12-1023", startTime:"12:00:00",  state:"planning"});
-				MegaTasks.insert({taskName: 'task1', eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+				MegaTasks.insert({taskName: me_pid+1, eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 					  			  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
-				MegaTasks.insert({taskName: 'task2', eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+				MegaTasks.insert({taskName: me_pid+2, eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 				                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
-				MegaTasks.insert({taskName: 'task3', eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+				MegaTasks.insert({taskName: me_pid+3, eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 				                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "canceled"});
 		}
 	
