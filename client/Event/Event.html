@@ -25,7 +25,11 @@
 				</ul>
 				<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
 				<a href="#">Start Time:<span class="badge">{{startTime}}</span></a> 
+				{{#each event_tasks}}
+					{{>Task}}
+				{{/each}}
 			</div>
+			
 		</div>
 </div>
 

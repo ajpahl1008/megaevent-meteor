@@ -59,6 +59,11 @@ if (Meteor.isClient) {
 			return Math.floor(percentage);
 		},
 		
+		event_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id});
+			//console.log("Completed: " + tasks.count());
+			return tasks;
+		},
 		completed_tasks: function() {
 			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
 			//console.log("Completed: " + tasks.count());
