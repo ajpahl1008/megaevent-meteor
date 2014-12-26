@@ -48,7 +48,6 @@ if (Meteor.isClient) {
 				return targetEvent = "Unamed Event";
 			}					
 		},
-		
 		complete_percentage: function() {
 			var percentage; 
 			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();
@@ -58,7 +57,6 @@ if (Meteor.isClient) {
 			percentage = Math.abs(( totalComplete / totalTaskCount) * 100);
 			return Math.floor(percentage);
 		},
-		
 		event_tasks: function() {
 			var tasks = MegaTasks.find({eventID: this._id});
 			//console.log("Completed: " + tasks.count());
@@ -84,8 +82,6 @@ if (Meteor.isClient) {
 			//console.log("Active Length: " + tasks.count());
 			return tasks;
 		}
-			
-			
 	});
 	
 	 removeEventsTasks = function(eventId) {

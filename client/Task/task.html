@@ -1,0 +1,45 @@
+<template name="Task">
+	<div class="row taskitem">
+			<div class="col-xs-3 ">
+				<div class="well">
+					{{#if editing_task}}
+						<input class="tasktext" type="text" name="taskTitle" value='{{taskName}}'/>
+					{{else}}
+						<h5 id="taskName" class="taskName">{{taskName}}<i class="glyphicon glyphicon-trash pull-right trashtask" data-toggle="modal" data-target="#smallTaskModal"></i></h5>
+					{{/if}}
+				</div>
+			</div>	
+			<div class="col-xs-9">
+				<div class="well">
+				
+					<ul class="nav nav-pills">
+					    <a href="#">Status:<span class="badge">{{taskStatus}}</span></a>
+						<a href="#">Owner:<span class="badge">{{taskExecutor.participantName}}</span></a>
+						<a href="#">Validator:<span class="badge">{{taskValidator.participantName}}</span></a>
+						
+					</ul>
+					<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
+					<a href="#">Start Time:<span class="badge">{{startTime}}</span></a> 
+				</div>
+			</div>
+	</div>
+
+	<div class="modal fade confirmTaskModal" id="smallTaskModal" tabindex="-1" role="dialog" aria-labelledby="smallTaskModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="myModalLabel">Delete Task</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to delete task: {{targeted_delete_task}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default delete-cancel-button" data-dismiss="modal">Cancel</button>
+	                <button type="button" class="btn btn-primary delete-yes-button">Delete Task</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+	
+</template>

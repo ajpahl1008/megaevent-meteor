@@ -8,7 +8,7 @@ findEventIDByName = function(eventName) {
 }
 
 findParticipantIDByName = function(idName) {
-	var participant = MegaParticipants.find({participantName: idName})._id;
+	var participant = MegaParticipants.findOne({participantName: idName});
 	return participant;
 }
 
@@ -19,8 +19,8 @@ loadTasks = function(taskVolume, eventState, taskState) {
 		var eventCursor = MegaEvents.find({state: eventState}).fetch();
 				eventCursor.forEach(function(row) {
 					MegaTasks.insert({taskName: "autoLoaded", eventID: findEventIDByName(row.eventName), startDate: "12/12/2012", startTime: "00:01:01",
-					                  taskDetails: "do some stuff",taskValidaion: "validate some stuff", taskExecutor: findParticipantIDByName("ID1"),
-					taskValidator: findParticipantIDByName("ID2") , taskStatus: taskState });
+					                  taskDetails: "do some stuff",taskValidaion: "validate some stuff", taskExecutor: findParticipantIDByName("ID4"),
+					taskValidator: findParticipantIDByName("ID2") , taskStatus: taskState, requiredRole: "SysAdmin(UNIX)" });
 				});
 	}
 }
@@ -37,7 +37,7 @@ reloadTestData = function() {
 	}
 	
 	if (MegaParticipants.find().count() === 0) {
-		var sysadminParticipants = ["ID2","ID3","ID4"];
+		var sysadminParticipants = ["ID1","ID2","ID3","ID4"];
 		console.log("Adding Simulated Participants - SysAdmins");
 		for (var i = 0; i < sysadminParticipants.length; i++) {
 			MegaParticipants.insert({participantName: sysadminParticipants[i], role:"sysadmin", phone:"555-1212", email:"dude@company.com"});
