@@ -2,7 +2,7 @@
 	<div class="Participant">
 			<select class="col-xs-10 list-group selectedParticipant">
 				{{#each all_persons}}
-					<option>{{participantName}}</option>
+					<option>{{userId}}</option>
 				{{/each}}
 			</select>
 	</div>
@@ -13,7 +13,7 @@
 			<select class="col-xs-10 list-group selectedValidator">
 				<option class="list-group-item"></option>
 				{{#each all_persons}}
-					<option>{{participantName}}</option>
+					<option>{{userId}}</option>
 				{{/each}}
 			</select>
 	</div>
@@ -24,7 +24,7 @@
 			<select class="col-xs-10 list-group selectedExecutor">
 				<option class="list-group-item"></option>
 				{{#each all_persons}}
-					<option>{{participantName}}</option>
+					<option>{{userId}}</option>
 				{{/each}}
 			</select>
 	</div>

@@ -1,6 +1,7 @@
 MegaEvents = new Meteor.Collection("MegaEvents");
 MegaTasks = new Meteor.Collection("MegaTasks");
 MegaParticipants = new Meteor.Collection("MegaParticipants");
+MegaRoles = new Meteor.Collection("MegaRoles");
 
 findEventIDByName = function(eventName) {
 	var megaevent = MegaEvents.findOne({eventName: eventName})._id;
@@ -38,15 +39,23 @@ reloadTestData = function() {
 	
 	if (MegaParticipants.find().count() === 0) {
 		var sysadminParticipants = ["ID1","ID2","ID3","ID4"];
-		console.log("Adding Simulated Participants - SysAdmins");
+		console.log("Adding Simulated Participants - Developer");
 		for (var i = 0; i < sysadminParticipants.length; i++) {
-			MegaParticipants.insert({participantName: sysadminParticipants[i], role:"sysadmin", phone:"555-1212", email:"dude@company.com"});
+			MegaParticipants.insert({firstName: "Scott", lastName: "Brown", userId: sysadminParticipants[i], role:"Developer", phoneNumber:"888-555-1212", emailAddress:"dude@company.com"});
 		}
 	
 		var ownersParticipants = ["ID5","ID7","ID8"];
-		console.log("Adding Simulated Participants - owners");
+		console.log("Adding Simulated Participants - Coordinator");
 		for (var i = 0; i < ownersParticipants.length; i++) {
-			MegaParticipants.insert({participantName: ownersParticipants[i], role:"owners", phone:"555-1212", email:"dude@company.com"});
+			MegaParticipants.insert({firstName: "Steve", lastName: "Jones", userId: ownersParticipants[i], role:"Change Coordinator", phoneNumber:"555-1212", emailAddress:"dude@company.com"});
+		}
+	}
+	
+	if (MegaRoles.find().count() == 0) {
+		var roles = ["Systems Engineer","DBA","Developer","San Engineer", "QA", "Audit", "Risk"];
+		console.log("Adding Simulated Roles");
+		for (var i=0; i< roles.length; i++) {
+			MegaRoles.insert({roleName: roles[i]});
 		}
 	}
 	

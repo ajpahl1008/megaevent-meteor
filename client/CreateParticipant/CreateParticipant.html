@@ -1,0 +1,54 @@
+<template name="CreateParticipant">
+	<div class="CreateParticipant">
+		<div class="page-header">
+			<h1>Create Participant</h1>
+		</div>
+		
+		<div class="page-body">
+			<div class="well well-sm ">
+				<i class="btn glyphicon glyphicon-floppy-disk  saveNewParticipant"></i>
+				<i class="btn glyphicon glyphicon-remove pull-right cancelParticipantCreate"></i>
+			</div>
+			
+			<div class="well">
+					
+				<div class="row">
+					<div class='col-sm-2'>First Name:<p></p>
+							<input class="span1-6 firstName" type="text" placeholder="{First Name}"><p></p>
+					</div>
+					<div class='col-sm-2'>Last Name:<p></p>
+							<input class="span1-16 lastName" type="text" placeholder="{Last Name}"><p></p>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class='col-sm-4'>UserId:<p></p>
+							<input class="span1-12 userId" type="text" placeholder="{User ID}"><p></p>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class='col-sm-4'>E-Mail:<p></p>
+							<input class="span1-12 emailAddress" type="text" placeholder="{someone@company.com}"><p></p>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class='col-sm-4'>Phone Number:<p></p>
+							<input class="span1-12 phoneNumber" type="text" placeholder="{888-555-1212}"><p></p>
+					</div>
+				</div>
+						
+				
+				<div class="row">
+					<div class='col-sm-2'>Role: 
+					   	{{>Role}}
+					</div>
+				</div>			
+			</div>
+			
+	
+		</div> 
+   </div>
+</template>
+	

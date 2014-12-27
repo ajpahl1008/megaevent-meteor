@@ -11,6 +11,6 @@ Router.map(function(){
 	this.route('Event', {path: 'Event'});
 	this.route('CreateEvent', {path:'/CreateEvent'});
 	this.route('CreateTask', {path:'/CreateTask'});
-	this.route('Participant', {path:'/Participant'});
+	this.route('CreateParticipant', {path:'/CreateParticipant'});
 	
 })
