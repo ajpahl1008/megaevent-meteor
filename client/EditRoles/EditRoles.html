@@ -1,0 +1,10 @@
+<template name="EditRoles">
+	<div class="EditRoles">
+		<div class="page-header">
+			<h1>Roles</h1>
+		</div>
+			{{#each list_roles}}
+				{{>RoleEditor}}
+			{{/each}}
+	</div>
+</template>

@@ -1,0 +1,10 @@
+<template name="EditParticipants">
+	<div class="EditParticipants">
+		<div class="page-header">
+			<h1>Participants</h1>
+		</div>
+			{{#each list_participants}}
+				{{>ParticipantEditor}}
+			{{/each}}
+	</div>
+</template>
