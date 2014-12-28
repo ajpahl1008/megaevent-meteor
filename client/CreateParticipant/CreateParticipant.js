@@ -1,5 +1,10 @@
 if (Meteor.isClient) {
 
+	Template.CreateParticipant.rendered=function(evt,tmpl) {
+		$('#selectedRole').selectpicker('');
+		
+	}
+
 	Template.CreateParticipant.events({
 		'click .cancelParticipantCreate': function(evt,tmpl) {
 			clearParticipantDeck(tmpl);
