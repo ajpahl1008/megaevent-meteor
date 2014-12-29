@@ -3,15 +3,15 @@
 	    <div class="navbar-header">
 	        <a class="navbar-brand" href="{{pathFor 'home'}}">MegaEvent</a>
 	        <ul class="nav navbar-nav navbar-left">
+           	  <li><a href="{{pathFor 'ActiveEvents'}}">LiveFeed</a></li>				
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">EventViewer <b class="caret"></b></a>
 		        <ul class="dropdown-menu">
-    			  <li><a href="{{pathFor 'ActiveEvents'}}">ActiveEvents</a></li>
 				  <li><a href="{{pathFor 'CompleteEvents'}}">CompleteEvents</a></li>
   				  <li><a href="{{pathFor 'PlanningEvents'}}">PlanningEvents</a></li>
 		        </ul>
 		      </li>
-	        	<li><a href="{{pathFor 'LiveFeed'}}">LiveFeed</a></li>				
+
 			</ul>
 			<ul class="nav navbar-nav navbar-left">
 			      <li class="dropdown">

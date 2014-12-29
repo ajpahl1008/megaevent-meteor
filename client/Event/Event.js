@@ -79,6 +79,38 @@ if (Meteor.isClient) {
 		}
 	});
 	
+	Template.CompletedEvents.helpers({
+		complete_percentage: function() {
+			var percentage; 
+			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();
+			var totalComplete = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
+			var totalCanceled = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
+			var totalTaskCount = totalTaskCount - totalCanceled;
+			percentage = Math.abs(( totalComplete / totalTaskCount) * 100);
+			return Math.floor(percentage);
+		},
+		event_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id});
+			return tasks;
+		},
+		completed_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
+			return tasks;
+		},
+		pending_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus:'pending'}).count();
+			return tasks;
+		},
+		active_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'active'}).count();
+			return tasks;
+		},
+		canceled_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
+			return tasks;
+		}
+	});
+	
 	 removeEventsTasks = function(eventId) {
 		 var targetTasks = MegaTasks.find({eventID: eventId}).fetch();
  				targetTasks.forEach(function(row) {

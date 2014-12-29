@@ -1,9 +1,7 @@
-if (Meteor.isClient) {
-
-	Template.CreateParticipant.rendered=function(evt,tmpl) {
-		$('#selectedRole').selectpicker('');
-		
-	}
+	// Template.CreateParticipant.rendered=function(evt,tmpl) {
+	// 	$('#selectedRole').selectpicker('');
+	//
+	// }
 
 	Template.CreateParticipant.events({
 		'click .cancelParticipantCreate': function(evt,tmpl) {
@@ -16,11 +14,20 @@ if (Meteor.isClient) {
 			var emailAddress = tmpl.find('.emailAddress').value;	
 			var phoneNumber = tmpl.find('.phoneNumber').value;					
 			var role = tmpl.find('.selectedRole').value;
-			MegaParticipants.insert({firstName: firstName, lastName: lastName, userId: userId, emailAddress: emailAddress, phoneNumber: phoneNumber, role: role});
-			clearParticipantDeck(tmpl);
-			Router.go('/CreateParticipant');
+			var participantInfo = {firstName: firstName, lastName: lastName, userId: userId, emailAddress: emailAddress, phoneNumber: phoneNumber, role: role};
+			validateParticipantAndSave(participantInfo,tmpl);
 		}
   	});
+	
+    var validateParticipantAndSave = function(participant,tmpl){
+ 		if (hasEmptyField(participant)) {
+ 			Alerts.add('Incomplete Data: Please Update And Resubmit', 'danger', {fadeIn: 500, fadeOut: 1000, autoHide: 3000});
+		} else {
+ 			MegaParticipants.insert(participant);
+			clearParticipantDeck(tmpl);
+ 			Alerts.add('Created Participant ' + participant.userId,'success',{fadeIn: 1000, fadeOut: 1000, autoHide: 3000});
+		}
+ 	}
 		
 	clearParticipantDeck = function(tmpl){
 		tmpl.find('.firstName').value = '';
@@ -31,5 +38,4 @@ if (Meteor.isClient) {
 		tmpl.find('.selectedRole').value = '';
 	}
 	
-}
-
+	

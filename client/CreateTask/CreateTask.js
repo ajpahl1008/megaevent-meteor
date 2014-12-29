@@ -1,4 +1,3 @@
-if (Meteor.isClient) {
 	Template.CreateTask.rendered=function() {
 			$('#datepicker').datetimepicker({	
 				pickTime: false
@@ -10,11 +9,14 @@ if (Meteor.isClient) {
 	
 	Template.CreateTask.events({
 		'click .cancelTaskCreate': function(evt,tmpl) {
-			clearDeck(tmpl);
+			clearTaskDeck(tmpl);
 		},
 		'click .saveNewTask': function(evt, tmpl) {
+     		var taskEvent = tmpl.find('.selectedEvent').value;
+			if ( taskEvent.length === 0 ) {
+	 			Alerts.add('Incomplete Data: Please Update And Resubmit', 'danger', {fadeIn: 500, fadeOut: 1000, autoHide: 3000});
+			} else {
 				var taskName = tmpl.find('.taskName').value;
-	     		var taskEvent = tmpl.find('.selectedEvent').value;
 				var taskEventId = findEventIDByName(taskEvent);
 				var startTaskDate = tmpl.find('.startTaskDate').value;
 				var startTaskTime = tmpl.find('.startTaskTime').value;
@@ -23,24 +25,28 @@ if (Meteor.isClient) {
 				var taskExecutor = tmpl.find('.selectedExecutor').value;
 				var taskValidator = tmpl.find('.selectedValidator').value;
 		
-				var taskId = MegaTasks.insert({
-					taskName: taskName,
-					eventID: taskEventId,
-					startDate: startTaskDate,
-					startTime: startTaskTime,
-					taskDetails: taskDetails,
-					taskValidaion: taskValidation,
-					taskExecutor: taskExecutor,
-					taskValidator: taskValidator,
+				var taskInfo = { taskName: taskName, eventID: taskEventId, startDate: startTaskDate,startTime: startTaskTime,
+					taskDetails: taskDetails, taskValidation: taskValidation,
+					taskExecutor: taskExecutor,	taskValidator: taskValidator,
 					taskStatus: "planning"
-				});
-				clearDeck(tmpl);
-				Router.go('/PlanningEvents');
+				};
+    			validateAndSave(taskInfo,tmpl);
+			}
 		}
 
   	});
+	
+    var validateAndSave = function(task,tmpl){
+ 		if (hasEmptyField(task)) {
+ 			Alerts.add('Incomplete Data: Please Update And Resubmit', 'danger', {fadeIn: 500, fadeOut: 1000, autoHide: 3000});
+		} else {
+ 			MegaTasks.insert(task);
+ 			clearTaskDeck(tmpl);
+ 			Alerts.add('Created Task ' + task.taskName,'success',{fadeIn: 1000, fadeOut: 1000, autoHide: 3000});
+		}
+ 	}
 		
-	clearDeck = function(tmpl){
+	var clearTaskDeck = function(tmpl){
 			tmpl.find('.taskName').value = '';
 			tmpl.find('.selectedEvent').value = '';
 			tmpl.find('.startTaskDate').value =  '';
@@ -49,8 +55,5 @@ if (Meteor.isClient) {
 			tmpl.find('.taskValidation').value = '';
 			tmpl.find('.selectedExecutor').value = '';
 			tmpl.find('.selectedValidator').value = '';
-			Router.go('/PlanningEvents');
 	}
-	
-}
 

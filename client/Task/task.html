@@ -41,3 +41,25 @@
 	</div>
 	
 </template>
+
+<template name="CompletedTasks">
+	<div class="row taskitem">
+			<div class="col-xs-4 ">
+				<div class="well">
+					<h6 id="taskName" class="taskName">{{taskName}}</h6>
+				</div>
+			</div>	
+			<div class="col-xs-6">
+				<div class="well">
+					    <a href="#">Status:<span class="badge">{{taskStatus}}</span></a>
+						<a href="#">Owner:<span class="badge">{{taskExecutor}}</span></a>
+						<a href="#">Validator:<span class="badge">{{taskValidator}}</span></a>
+						<div>
+							<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
+	    					<a href="#">Start Time:<span class="badge">{{startTime}}</span></a>	
+						</div>
+				</div>
+			</div>
+	</div>
+
+</template>

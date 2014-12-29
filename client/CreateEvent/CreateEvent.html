@@ -5,43 +5,45 @@
 		</div>
 		
 		<div class="page-body">
-			<div class="well well-sm ">
-				<i class="btn glyphicon glyphicon-floppy-disk  saveNewEvent"></i>
-				<i class="btn glyphicon glyphicon-remove pull-right cancelEventCreate"></i>
-			</div>
-	
-			<div class="well">
-				<div class="row">
-					<div class='col-sm-3'>Event Name: 
-							<input class="span1-12 eventName" type="text" placeholder="{Event Name}"><p></p>
+					<div class="well well-sm ">
+						<i class="btn glyphicon glyphicon-floppy-disk bv-visible-submit saveNewEvent"></i>
+						<i class="btn glyphicon glyphicon-remove pull-right cancelEventCreate"></i>
 					</div>
-				</div>
+							
+					<div class="well">
+						<div class="row">
+							<div class='col-sm-3'>Event Name: 
+								<input id='eventName' type="text" class="span1-12 eventName" placeholder="{Event Name}"><p></p>
+							</div>
+						</div>
 		
-				<div class="row">
-					<div class='col-sm-3'>Event Start Date:
-			       		<div class="form-group">
-			  			  <div class='input-group date' id='datepicker'>
-			                	  <input type='text' class="col-sm-12 startDateMarker" data-date-format="MM/DD/YYYY"/>
-			                   	 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-			               	</div>
-			           	</div>
-			   		</div>
-					<div class='col-sm-3'>Event Start Time:
-			       		<div class="form-group">
-			  			  <div class='input-group date' id='timepicker'>
-			                	  <input type='text' class="col-sm-12 startTimeMarker"/>
-			                   	  <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-			               	</div>
-			           	</div>
-			   		</div>
-				</div>
-				<div class="row">
-					<div class='col-sm-3'>Event Owner: 
-					   	{{>Participant}}
+						<div class="row">
+							<div class='col-sm-3'>Event Start Date:
+					       		<div class="form-group">
+					  			  <div class='input-group date' id='datepicker'>
+					                	  <input type='text' class="col-sm-12 startDateMarker" data-date-format="MM/DD/YYYY"/>
+					                   	 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+					               	</div>
+					           	</div>
+					   		</div>
+							
+							<div class='col-sm-3'>Event Start Time:
+					       		<div class="form-group">
+					  			  <div class='input-group date' id='timepicker'>
+					                	  <input type='text' class="col-sm-12 startTimeMarker"/>
+					                   	  <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+					               	</div>
+					           	</div>
+					   		</div>
+						</div>
+						<div class="row">
+							<div class='col-sm-3'>Event Owner: 
+							   	{{>Participant}}
+							</div>
+						</div>			
 					</div>
-				</div>			
-			</div>
-		</div> 
+					
+	</div>
+	{{> bootstrapAlerts}}
    </div>
 </template>
-	

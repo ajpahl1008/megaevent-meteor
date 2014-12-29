@@ -13,6 +13,16 @@ findParticipantIDByName = function(idName) {
 	return participant;
 }
 
+hasEmptyField = function(jsonObject) {
+	var returnType = false;
+	for (var item in jsonObject) {
+		if (jsonObject[item].length === 0)  {
+			returnType = true;
+		}
+	}
+	return returnType;
+}
+
 //TEST DATA LOADER
 loadTasks = function(taskVolume, eventState, taskState) {
 
