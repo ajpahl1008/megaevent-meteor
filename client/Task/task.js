@@ -33,6 +33,9 @@ if (Meteor.isClient) {
 	});
 
 	Template.Task.helpers({
+		editing_task: function() {
+				return Session.get('editing_task');
+		},
 		targeted_delete_task: function() {
 	 		var targetTask = MegaTasks.findOne(Session.get('delete_taskId'));
 			if (((typeof targetTask != "undefined") && (typeof targetTask.valueOf() == "object")) && (targetTask.taskName.length > 0 )) {

@@ -5,8 +5,11 @@
 					{{#if editing_task}}
 						<input class="tasktext" type="text" name="taskTitle" value='{{taskName}}'/>
 					{{else}}
-						<h6 id="taskName" class="taskName">{{taskName}}<i class="glyphicon glyphicon-trash pull-left trashtask" data-toggle="modal" data-target="#smallTaskModal"></i></h6>
+						<h6 id="taskName" class="taskName">{{taskName}}
+							<i class="glyphicon glyphicon-trash pull-left trashtask" data-toggle="modal" data-target="#smallTaskModal"></i>
+						</h6>
 					{{/if}}
+					
 				</div>
 			</div>	
 			<div class="col-xs-6">
