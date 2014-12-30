@@ -12,8 +12,10 @@ Template.RoleEditor.events({
 		 $('.confirmRoleModal').modal('show');
 	},
 		'click .delete-yes-button': function(evt, tmpl) {
-		
+			var _tmpRoleInfo = MegaRoles.findOne(Session.get('delete_roleId'));
 		MegaRoles.remove({_id: Session.get('delete_roleId')});
+		MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Role: " + _tmpRoleInfo.roleName});
+		
 		$('.confirmRoleModal').on('hidden.bs.modal', function() {
         }).modal('hide');
     	Session.set('delete_roleId',null);

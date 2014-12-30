@@ -22,7 +22,11 @@ Template.ParticipantEditor.events({
 	},
 		'click .delete-yes-button': function(evt, tmpl) {
 		
+		var _tmpParticipantInfo = MegaParticipants.findOne(Session.get('delete_participantId'));
 		MegaParticipants.remove({_id: Session.get('delete_participantId')});
+		MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Participant: " + _tmpParticipantInfo.userId});
+		
+		
 		$('.confirmParticipantModal').on('hidden.bs.modal', function() {
         }).modal('hide');
     	Session.set('delete_roleId',null);
