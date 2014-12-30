@@ -62,6 +62,38 @@ if (Meteor.isClient) {
 			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
 			return tasks;
 		},
+		planning_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus:'planning'}).count();
+			return tasks;
+		},
+		active_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'active'}).count();
+			return tasks;
+		},
+		canceled_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
+			return tasks;
+		}
+	});
+	
+	Template.CompletedEvents.helpers({
+		complete_percentage: function() {
+			var percentage; 
+			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();
+			var totalComplete = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
+			var totalCanceled = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
+			var totalTaskCount = totalTaskCount - totalCanceled;
+			percentage = Math.abs(( totalComplete / totalTaskCount) * 100);
+			return Math.floor(percentage);
+		},
+		event_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id});
+			return tasks;
+		},
+		completed_tasks: function() {
+			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
+			return tasks;
+		},
 		pending_tasks: function() {
 			var tasks = MegaTasks.find({eventID: this._id, taskStatus:'pending'}).count();
 			return tasks;
@@ -76,7 +108,7 @@ if (Meteor.isClient) {
 		}
 	});
 	
-	Template.CompletedEvents.helpers({
+	Template.ActiveEvent.helpers({
 		complete_percentage: function() {
 			var percentage; 
 			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();

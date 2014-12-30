@@ -1,56 +1,53 @@
 <template name="Event">
-
-<div class="row eventitem">
-		<div class="col-xs-3 ">
-			<div class="well">
-				{{#if editing_event}}
-					<input class="eventtext" type="text" name="eventTitle" value='{{eventName}}'/>
-				{{else}}
-					<h5 id="eventName" class="eventName">{{eventName}}<i class="glyphicon glyphicon-trash pull-right trashevent" data-toggle="modal" data-target="#smallModal"></i></h5>
-				{{/if}}
-			</div>
-		</div>	
-		<div class="col-xs-9">
-			<div class="well">
-				<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{complete_percentage}}%">{{complete_percentage}}% Complete</div>
+	<div class="row eventitem">
+			<div class="col-xs-3 ">
+				<div class="well">
+					{{#if editing_event}}
+						<input class="eventtext" type="text" name="eventTitle" value='{{eventName}}'/>
+					{{else}}
+						<h5 id="eventName" class="eventName">{{eventName}}<i class="glyphicon glyphicon-trash pull-right trashevent" data-toggle="modal" data-target="#smallModal"></i></h5>
+					{{/if}}
 				</div>
-				
-				<ul class="nav nav-pills">
-				    <a href="#">Complete:<span class="badge">{{complete_percentage}}%</span></a>
-					<a href="#">Pending<span class="badge">{{pending_tasks}}</span></a>
-					<a href="#">Completed<span class="badge">{{completed_tasks}}</span></a>
-					<a href="#">Active<span class="badge">{{active_tasks}}</span></a>
-					<a href="#">Canceled<span class="badge">{{canceled_tasks}}</span></a>
-				</ul>
-				<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
-				<a href="#">Start Time:<span class="badge">{{startTime}}</span></a> 
-				{{#each event_tasks}}
-					{{>Task}}
-				{{/each}}
-			</div>
+			</div>	
+			<div class="col-xs-9">
+				<div class="well">
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{complete_percentage}}%">{{complete_percentage}}% Complete</div>
+					</div>
 			
-		</div>
-</div>
-
-
-<div class="modal fade confirmModal" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title" id="myModalLabel">Delete Event</h4>
-            </div>
-            <div class="modal-body">
-                <h3>Are you sure you want to delete event: {{targeted_delete_event}}</h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default delete-cancel-button" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary delete-yes-button">Delete Event</button>
-        </div>
-    </div>
-  </div>
-</div>
+					<ul class="nav nav-pills">
+					    <a href="#">Complete:<span class="badge">{{complete_percentage}}%</span></a>
+						<a href="#">Planning<span class="badge">{{planning_tasks}}</span></a>
+						<a href="#">Completed<span class="badge">{{completed_tasks}}</span></a>
+						<a href="#">Active<span class="badge">{{active_tasks}}</span></a>
+						<a href="#">Canceled<span class="badge">{{canceled_tasks}}</span></a>
+					</ul>
+					<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
+					<a href="#">Start Time:<span class="badge">{{startTime}}</span></a> 
+					{{#each event_tasks}}
+						{{>Task}}
+					{{/each}}
+				</div>
+		
+			</div>
+	</div>
+	<div class="modal fade confirmModal" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="myModalLabel">Delete Event</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to delete event: {{targeted_delete_event}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default delete-cancel-button" data-dismiss="modal">Cancel</button>
+	                <button type="button" class="btn btn-primary delete-yes-button">Delete Event</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
  
 </template>
 

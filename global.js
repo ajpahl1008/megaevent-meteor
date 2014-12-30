@@ -116,9 +116,9 @@ reloadTestData = function() {
 		for (var i = 0; i < planningEvents.length; i++) {
 			var me_pid = MegaEvents.insert({eventName: planningEvents[i], startDate:"12-12-1023", startTime:"12:00:00",  state:"planning"});
 				MegaTasks.insert({taskName: me_pid+1, eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
-					  			  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
+					  			  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "planning"});
 				MegaTasks.insert({taskName: me_pid+2, eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
-				                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
+				                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "planning"});
 				MegaTasks.insert({taskName: me_pid+3, eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 				                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "canceled"});
 		}
