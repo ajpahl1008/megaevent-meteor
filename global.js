@@ -2,6 +2,7 @@ MegaEvents = new Meteor.Collection("MegaEvents");
 MegaTasks = new Meteor.Collection("MegaTasks");
 MegaParticipants = new Meteor.Collection("MegaParticipants");
 MegaRoles = new Meteor.Collection("MegaRoles");
+MegaFeed = new Meteor.Collection("MegaFeed");
 
 findEventIDByName = function(eventName) {
 	var megaevent = MegaEvents.findOne({eventName: eventName})._id;
@@ -35,6 +36,7 @@ loadTasks = function(taskVolume, eventState, taskState) {
 				});
 	}
 }
+
 
 //TEST DATA LOADER
 reloadTestData = function() {
@@ -106,7 +108,12 @@ reloadTestData = function() {
 				MegaTasks.insert({taskName: me_pid+3, eventID: me_pid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 				                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "canceled"});
 		}
+	}
 	
+	console.log("Added Simulated Feed Item");
+	if (MegaFeed.find().count() === 0 ) {
+		MegaFeed.insert({feedTime: "12:00:00", feedDate: "12/12/2012", feedData: "Some Shit Happened at this time."});
+		MegaFeed.insert({feedTime: "12:00:01", feedDate: "12/12/2012", feedData: "Some More Shit Went down"});
 	} 
 	
 }
