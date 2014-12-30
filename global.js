@@ -24,6 +24,20 @@ hasEmptyField = function(jsonObject) {
 	return returnType;
 }
 
+getTimeStamp=function() {
+    var now = new Date();
+    return ((now.getMonth() + 1) + '/' +
+            (now.getDate()) + '/' +
+             now.getFullYear() + " " +
+             now.getHours() + ':' +
+             ((now.getMinutes() < 10)
+                 ? ("0" + now.getMinutes())
+                 : (now.getMinutes())) + ':' +
+             ((now.getSeconds() < 10)
+                 ? ("0" + now.getSeconds())
+                 : (now.getSeconds())));
+}
+
 //TEST DATA LOADER
 loadTasks = function(taskVolume, eventState, taskState) {
 
@@ -112,8 +126,8 @@ reloadTestData = function() {
 	
 	console.log("Added Simulated Feed Item");
 	if (MegaFeed.find().count() === 0 ) {
-		MegaFeed.insert({feedTime: "12:00:00", feedDate: "12/12/2012", feedData: "Some Shit Happened at this time."});
-		MegaFeed.insert({feedTime: "12:00:01", feedDate: "12/12/2012", feedData: "Some More Shit Went down"});
+		MegaFeed.insert({feedTimeStamp: getTimeStamp(),  feedData: "Some Shit Happened at this time."});
+		MegaFeed.insert({feedTimeStamp: getTimeStamp(),  feedData: "Some More Shit Went down"});
 	} 
 	
 }

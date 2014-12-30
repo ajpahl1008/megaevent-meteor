@@ -30,6 +30,8 @@
 			MegaEvents.insert(eventInfo);
 			clearEventDeck(tmpl);
 			Alerts.add('Created Event ' + eventInfo.eventName,'success',{fadeIn: 1000, fadeOut: 1000, autoHide: 3000});
+			MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Created New Event: " + eventInfo.eventName});
+			
 		}
 	}
 

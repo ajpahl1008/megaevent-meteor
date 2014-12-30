@@ -43,6 +43,8 @@
  			MegaTasks.insert(task);
  			clearTaskDeck(tmpl);
  			Alerts.add('Created Task ' + task.taskName,'success',{fadeIn: 1000, fadeOut: 1000, autoHide: 3000});
+			MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Created New Task: " + task.taskName});
+			
 		}
  	}
 		

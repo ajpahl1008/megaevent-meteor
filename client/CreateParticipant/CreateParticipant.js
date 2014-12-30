@@ -26,6 +26,8 @@
  			MegaParticipants.insert(participant);
 			clearParticipantDeck(tmpl);
  			Alerts.add('Created Participant ' + participant.userId,'success',{fadeIn: 1000, fadeOut: 1000, autoHide: 3000});
+			MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Created New Participant: " + participant.userId});
+			
 		}
  	}
 		

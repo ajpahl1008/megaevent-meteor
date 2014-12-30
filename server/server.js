@@ -2,7 +2,6 @@ if (Meteor.isServer) {
 	Meteor.startup(function() {
 		console.log("Starting Up MegaEvent");
 		reloadTestData();
-	
 	});
 	
 	Meteor.methods({

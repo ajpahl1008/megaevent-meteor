@@ -5,26 +5,23 @@ if (Meteor.isClient) {
 			Session.set('delete_eventId',tmpl.data._id);
 			 $('.confirmModal').modal('show');
 		},
-			'click .delete-yes-button': function(evt, tmpl) {
-			
-			removeEventsTasks(Session.get('delete_eventId'));
-			
-			MegaEvents.remove({_id: Session.get('delete_eventId')});
-			$('.confirmModal').on('hidden.bs.modal', function() {
-	        }).modal('hide');
-	    	Session.set('delete_eventId',null);
-		
-		},
-			'click .delete-cancel-button': function(evt, tmpl) {
+ 		'click .delete-yes-button': function(evt, tmpl) {
+				var _tmpEventInfo = MegaEvents.findOne(Session.get('delete_eventId'));
+				removeEventsTasks(Session.get('delete_eventId'));
+				MegaEvents.remove({_id: Session.get('delete_eventId')});
 				$('.confirmModal').on('hidden.bs.modal', function() {
-        	}).modal('hide');
-	    	Session.set('delete_eventId',null);
-			
+		        }).modal('hide');
+		    	Session.set('delete_eventId',null);
+				MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Event: " + _tmpEventInfo.eventName});
+		},
+		'click .delete-cancel-button': function(evt, tmpl) {
+				$('.confirmModal').on('hidden.bs.modal', function() {
+	        	}).modal('hide');
+		    	Session.set('delete_eventId',null);
 		},
 		  'dblclick .eventName': function(evt, tmpl) {
 		   Session.set('editing_event', true);
-		
-		},
+	   },
 			'keyup .eventtext': function(evt,tmpl) {
 			if (evt.which === 13 ) {
 				var eventText = tmpl.find('.eventtext').value;
@@ -115,7 +112,7 @@ if (Meteor.isClient) {
 		 var targetTasks = MegaTasks.find({eventID: eventId}).fetch();
  				targetTasks.forEach(function(row) {
 					MegaTasks.remove({_id: row._id});
-					console.log("Removing Task:  " + row._id);
+					MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Task: " + row.taskName});
  				});
 		
 	}

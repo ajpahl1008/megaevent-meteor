@@ -12,6 +12,7 @@
 				MegaRoles.insert({roleName: roleName});
 				clearRoleDeck(tmpl);	
 				Alerts.add('Created Role ' + roleName ,'success',{fadeIn: 1000, fadeOut: 1000, autoHide: 3000});
+				MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Created New Role: " + roleName});
 			}
 		}
   	});
