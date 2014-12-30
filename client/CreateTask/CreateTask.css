@@ -1,0 +1,7 @@
+textarea {
+    width: 100%;
+}
+
+.datepicker,.timepicker {
+	background-color: rgb(17,121,186);
+}

@@ -1,6 +1,6 @@
 <template name="Participant">
 	<div class="Participant">
-			<select class="col-xs-10 list-group selectedParticipant">
+			<select class="col-md-10 list-group selectedParticipant">
 				<option class="list-group-item"></option>
 				{{#each all_persons}}
 					<option>{{userId}}</option>
@@ -11,7 +11,7 @@
 
 <template name="Validator">
 	<div class="Validator">
-			<select class="col-xs-10 list-group selectedValidator">
+			<select class="col-md-10 list-group selectedValidator">
 				<option class="list-group-item"></option>
 				{{#each all_persons}}
 					<option>{{userId}}</option>
@@ -22,7 +22,7 @@
 
 <template name="Executor">
 	<div class="Executor">
-			<select class="col-xs-10 list-group selectedExecutor">
+			<select class="col-md-10 list-group selectedExecutor">
 				<option class="list-group-item"></option>
 				{{#each all_persons}}
 					<option>{{userId}}</option>
@@ -35,7 +35,14 @@
 	<div class="Participant">
 		<div class="col-xs-4 ">
 			<div class="well">
-					<h6 id="participantName" class="participantName"> {{userId}}<i class="glyphicon glyphicon-trash pull-left trashparticipant" data-toggle="modal" data-target="#smallParticipantModal"></i></h6>
+				
+				<div>
+					<p><i class="glyphicon glyphicon-trash pull-left trashparticipant" data-toggle="modal" data-target="#smallParticipantModal"></i></p>
+				</div>
+				<div>
+					<h6 id="participantName" class="participantName"> {{firstName}} {{lastName}} ({{userId}})</h6>
+				</div>	
+				
 			</div>
 		</div>
 

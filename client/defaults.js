@@ -4,3 +4,4 @@ Session.setDefault('delete_eventId', null);
 Session.setDefault('delete_taskId', null);
 Session.setDefault('delete_roleId', null);
 Session.setDefault('delete_participantId', null);
+Alerts.defaultOptions.alertsLimit = 1;

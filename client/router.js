@@ -1,6 +1,7 @@
 Router.configure({
 	layoutTemplate: 'layout'
 });
+
 Router.map(function(){
 	this.route('home', {path:'/'});
 	this.route('about', {path:'/about'});
@@ -14,6 +15,5 @@ Router.map(function(){
 	this.route('CreateParticipant', {path:'/CreateParticipant'});
 	this.route('CreateRole', {path:'/CreateRole'});
 	this.route('EditRoles', {path:'/EditRoles'});
-   this.route('EditParticipants', {path:'/EditParticipants'});
-	
+    this.route('EditParticipants', {path:'/EditParticipants'});
 })
