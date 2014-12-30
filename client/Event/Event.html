@@ -5,7 +5,12 @@
 					{{#if editing_event}}
 						<input class="eventtext" type="text" name="eventTitle" value='{{eventName}}'/>
 					{{else}}
-						<h5 id="eventName" class="eventName">{{eventName}}<i class="glyphicon glyphicon-trash pull-right trashevent" data-toggle="modal" data-target="#smallModal"></i></h5>
+						<h5 id="eventName" class="eventName">
+							<i class="glyphicon glyphicon-trash pull-right trashevent" data-toggle="modal" data-target="#smallModal"></i>
+							<i class="glyphicon glyphicon-ok pull-left activateEvent" data-toggle="activateModal" data-target="#smallActivateModal"></i>
+							  {{eventName}}
+						</h5>
+						
 					{{/if}}
 				</div>
 			</div>	
@@ -31,12 +36,13 @@
 		
 			</div>
 	</div>
+	
 	<div class="modal fade confirmModal" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModal" aria-hidden="true">
 	    <div class="modal-dialog">
 	        <div class="modal-content">
 	            <div class="modal-header">
 	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-	            <h4 class="modal-title" id="myModalLabel">Delete Event</h4>
+	            <h4 class="modal-title" id="deleteModalLabel">Delete Event</h4>
 	            </div>
 	            <div class="modal-body">
 	                <h3>Are you sure you want to delete event: {{targeted_delete_event}}</h3>
@@ -44,6 +50,24 @@
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default delete-cancel-button" data-dismiss="modal">Cancel</button>
 	                <button type="button" class="btn btn-primary delete-yes-button">Delete Event</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="modal fade activateModal" id="smallActivateModal" tabindex="-1" role="dialog" aria-labelledby="smallActivateModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="activateModal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="activateModalLabel">Activate Event</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to activate event: {{targeted_activate_event}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default activate-cancel-button" data-dismiss="activateModal">Cancel</button>
+	                <button type="button" class="btn btn-primary activate-yes-button">Activate Event</button>
 	        </div>
 	    </div>
 	  </div>

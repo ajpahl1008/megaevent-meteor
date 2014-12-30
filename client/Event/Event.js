@@ -1,16 +1,13 @@
-if (Meteor.isClient) {
-	
 	Template.Event.events({
 		'click .trashevent': function(evt,tmpl) {
 			Session.set('delete_eventId',tmpl.data._id);
 			 $('.confirmModal').modal('show');
 		},
- 		'click .delete-yes-button': function(evt, tmpl) {
+		'click .delete-yes-button': function(evt, tmpl) {
 				var _tmpEventInfo = MegaEvents.findOne(Session.get('delete_eventId'));
 				removeEventsTasks(Session.get('delete_eventId'));
 				MegaEvents.remove({_id: Session.get('delete_eventId')});
-				$('.confirmModal').on('hidden.bs.modal', function() {
-		        }).modal('hide');
+				$('.confirmModal').on('hidden.bs.modal', function() {}).modal('hide');
 		    	Session.set('delete_eventId',null);
 				MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Event: " + _tmpEventInfo.eventName});
 		},
@@ -18,6 +15,23 @@ if (Meteor.isClient) {
 				$('.confirmModal').on('hidden.bs.modal', function() {
 	        	}).modal('hide');
 		    	Session.set('delete_eventId',null);
+		},
+		'click .activateEvent': function(evt,tmpl) {
+			Session.set('activate_eventId',tmpl.data._id);
+			 $('.activateModal').modal('show');
+		},
+		'click .activate-yes-button': function(evt, tmpl) {
+				var _tmpEventInfo = MegaEvents.findOne(Session.get('activate_eventId'));
+				activateEventsTasks(Session.get('activate_eventId'));
+				MegaEvents.update(Session.get('activate_eventId'),{$set:{state:"active"}});
+				$('.activateModal').on('hidden.bs.modal', function() { }).modal('hide');
+		    	Session.set('activate_eventId',null);
+				MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Activated Event: " + _tmpEventInfo.eventName});
+		},
+		'click .activate-cancel-button': function(evt, tmpl) {
+				$('.activateModal').on('hidden.bs.modal', function() {
+	        	}).modal('hide');
+		    	Session.set('activate_eventId',null);
 		},
 		  'dblclick .eventName': function(evt, tmpl) {
 		   Session.set('editing_event', true);
@@ -39,6 +53,14 @@ if (Meteor.isClient) {
 		},
 		targeted_delete_event: function() {
 	 		var targetEvent = MegaEvents.findOne(Session.get('delete_eventId'));
+			if (((typeof targetEvent != "undefined") && (typeof targetEvent.valueOf() == "object")) && (targetEvent.eventName.length > 0 )) {
+				return targetEvent.eventName;	
+			} else {
+				return targetEvent = "No-Name Event";
+			}					
+		},
+		targeted_activate_event: function() {
+	 		var targetEvent = MegaEvents.findOne(Session.get('activate_eventId'));
 			if (((typeof targetEvent != "undefined") && (typeof targetEvent.valueOf() == "object")) && (targetEvent.eventName.length > 0 )) {
 				return targetEvent.eventName;	
 			} else {
@@ -146,7 +168,18 @@ if (Meteor.isClient) {
 					MegaTasks.remove({_id: row._id});
 					MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Task: " + row.taskName});
  				});
-		
 	}
-}
+	
+	activateEventsTasks = function(eventId) {
+	 var targetTasks = MegaTasks.find({eventID: eventId}).fetch();
+				targetTasks.forEach(function(row) {
+					if (row.taskStatus != "canceled" && row.taskStatus != "pending" ) {
+						MegaTasks.update(row._id,{$set: {taskStatus:"pending"}});
+						MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Pending Task: " + row.taskName});
+					} else {
+						MegaTasks.remove({_id: row._id});
+						MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Canceled Task: " + row.taskName});
+					}
+				});
+	}
 
