@@ -5,7 +5,7 @@ if (Meteor.isClient) {
 			Session.set('delete_taskId',tmpl.data._id);
 			 $('.confirmTaskModal').modal('show');
 		},
-		'click .delete-yes-button': function(evt, tmpl) {
+		'click .delete-task-yes-button': function(evt, tmpl) {
 			var _tmpTaskInfo = MegaTasks.findOne(Session.get('delete_taskId'));
 				MegaTasks.remove({_id: Session.get('delete_taskId')});
 				$('.confirmTaskModal').on('hidden.bs.modal', function() {
@@ -13,7 +13,7 @@ if (Meteor.isClient) {
 		    	Session.set('delete_taskId',null);
 				MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Deleted Task: " + _tmpTaskInfo.taskName});
 		},
-			'click .delete-cancel-button': function(evt, tmpl) {
+			'click .delete-task-cancel-button': function(evt, tmpl) {
 				$('.confirmTaskModal').on('hidden.bs.modal', function() {
         	}).modal('hide');
 	    	Session.set('delete_taskId',null);
