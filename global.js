@@ -10,8 +10,8 @@ findEventIDByName = function(eventName) {
 }
 
 findParticipantIDByName = function(idName) {
-	var participant = MegaParticipants.findOne({participantName: idName});
-	return participant;
+	var participant = MegaParticipants.findOne({userId: idName});
+	return participant.userId;
 }
 
 hasEmptyField = function(jsonObject) {
@@ -102,7 +102,7 @@ reloadTestData = function() {
 			MegaTasks.insert({taskName: me_aid+4, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
 			MegaTasks.insert({taskName: me_aid+5, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
-			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "canceled"});
+			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "active"});
 
 		}
 		console.log("Adding Simulated Events - Complete");
