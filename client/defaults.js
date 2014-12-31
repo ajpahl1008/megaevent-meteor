@@ -8,4 +8,11 @@ Session.setDefault('delete_participantId', null);
 
 Session.setDefault('activate_eventId', null);
 
+Session.setDefault('cancel_taskId',null);
+Session.setDefault('complete_taskId',null);
+Session.setDefault('active_taskId',null);
+Session.setDefault('pending_taskId',null);
+
+
+
 Alerts.defaultOptions.alertsLimit = 1;

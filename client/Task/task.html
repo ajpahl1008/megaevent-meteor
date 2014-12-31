@@ -1,4 +1,106 @@
-<template name="Task">
+<template name="ActiveTask">
+	<div class="row taskitem">
+			<div class="col-xs-4 ">
+				<div class="well">
+						<h6 id="taskName" class="taskName">
+							<i class="glyphicon glyphicon-ok pull-left completetask" data-toggle="completemodal" data-target="#smallTaskModal"></i>
+						    <i class="glyphicon glyphicon-ban-circle pull-left canceltask" data-toggle="cancelmodal" data-target="#smallTaskModal"></i>
+							<i class="glyphicon glyphicon-play pull-left activetask" data-toggle="activemodal" data-target="#smallTaskModal"></i>
+							<i class="glyphicon glyphicon-pause pull-left pendingtask" data-toggle="pendingmodal" data-target="#smallTaskModal"></i>
+							{{taskName}}
+						</h6>
+					
+				</div>
+			</div>	
+			<div class="col-xs-6">
+				<div class="well">
+					    <a href="#">Status:<span class="badge">{{taskStatus}}</span></a>
+						<a href="#">Owner:<span class="badge">{{taskExecutor}}</span></a>
+						<a href="#">Validator:<span class="badge">{{taskValidator}}</span></a>
+						<div>
+							<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
+	    					<a href="#">Start Time:<span class="badge">{{startTime}}</span></a>	
+						</div>
+				</div>
+			</div>
+	</div>
+
+	<div class="modal fade completeTaskModal" id="smallCompleteTaskModal" tabindex="-1" role="dialog" aria-labelledby="smallTaskModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="completemodal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="myModalTaskLabel">Complete Task</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to completed task: {{targeted_complete_task}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default complete-task-cancel-button" data-dismiss="modal">Cancel</button>
+	                <button type="button" class="btn btn-primary complete-task-yes-button">Complete Task</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="modal fade cancelTaskModal" id="smallCancelTaskModal" tabindex="-1" role="dialog" aria-labelledby="smallTaskModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="cancelmodal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="myModalTaskLabel">Cancel Task</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to cancel task: {{targeted_cancel_task}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default cancel-task-cancel-button" data-dismiss="modal">Cancel</button>
+	                <button type="button" class="btn btn-primary cancel-task-yes-button">Cancel Task</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="modal fade activeTaskModal" id="smallActiveTaskModal" tabindex="-1" role="dialog" aria-labelledby="smallTaskModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="activemodal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="myModalTaskLabel">Activate Task</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to activate task: {{targeted_active_task}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default active-task-cancel-button" data-dismiss="modal">Cancel</button>
+	                <button type="button" class="btn btn-primary active-task-yes-button">Activate Task</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="modal fade pendingTaskModal" id="smallPendingTaskModal" tabindex="-1" role="dialog" aria-labelledby="smallTaskModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="pendingmodal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="myModalTaskLabel">Pending Task</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to mark task pending: {{targeted_pending_task}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default pending-task-cancel-button" data-dismiss="modal">Cancel</button>
+	                <button type="button" class="btn btn-primary pending-task-yes-button">Mark Pending</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+	
+</template>
+
+
+<template name="PlanningTask">
 	<div class="row taskitem">
 			<div class="col-xs-4 ">
 				<div class="well">

@@ -100,7 +100,10 @@ reloadTestData = function() {
 			MegaTasks.insert({taskName: me_aid+3, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
 			MegaTasks.insert({taskName: me_aid+4, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
+			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "pending"});
+			MegaTasks.insert({taskName: me_aid+5, eventID: me_aid, startDate: "12/12/2012", startTime: "00:01:01",taskDetails: "do some stuff",taskValidaion: "validate some stuff",
 			                  taskExecutor: findParticipantIDByName("ID1"),taskValidator: findParticipantIDByName("ID2") ,taskStatus: "canceled"});
+
 		}
 		console.log("Adding Simulated Events - Complete");
 		for (var i = 0; i < completeEvents.length; i++) {

@@ -1,4 +1,4 @@
-<template name="Event">
+<template name="PlanningEvent">
 	<div class="row eventitem">
 			<div class="col-xs-3 ">
 				<div class="well">
@@ -30,7 +30,7 @@
 					<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
 					<a href="#">Start Time:<span class="badge">{{startTime}}</span></a> 
 					{{#each event_tasks}}
-						{{>Task}}
+						{{>PlanningTask}}
 					{{/each}}
 				</div>
 		
@@ -132,7 +132,7 @@
 				<a href="#">Start Date:<span class="badge">{{startDate}}</span></a>
 				<a href="#">Start Time:<span class="badge">{{startTime}}</span></a> 
 				{{#each event_tasks}}
-					{{>CompletedTasks}}
+					{{>ActiveTask}}
 				{{/each}}
 			</div>
 			

@@ -1,4 +1,9 @@
-	Template.Event.events({
+Template.ActiveEvent.events({
+	
+});
+
+
+Template.PlanningEvent.events({
 		'click .trashevent': function(evt,tmpl) {
 			Session.set('delete_eventId',tmpl.data._id);
 			 $('.confirmModal').modal('show');
@@ -45,9 +50,9 @@
 			 	Session.set('editing_event', false);
 			 } 
 		}	
-	});
+});
 
-	Template.Event.helpers({
+Template.PlanningEvent.helpers({
 		editing_event: function() {
 				return Session.get('editing_event');
 		},
@@ -96,9 +101,9 @@
 			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
 			return tasks;
 		}
-	});
+});
 	
-	Template.CompletedEvents.helpers({
+Template.CompletedEvents.helpers({
 		complete_percentage: function() {
 			var percentage; 
 			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();
@@ -128,9 +133,9 @@
 			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
 			return tasks;
 		}
-	});
-	
-	Template.ActiveEvent.helpers({
+});
+
+Template.ActiveEvent.helpers({
 		complete_percentage: function() {
 			var percentage; 
 			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();
@@ -160,7 +165,7 @@
 			var tasks = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
 			return tasks;
 		}
-	});
+});
 	
 	 removeEventsTasks = function(eventId) {
 		 var targetTasks = MegaTasks.find({eventID: eventId}).fetch();
