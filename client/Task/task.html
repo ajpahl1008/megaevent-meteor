@@ -1,16 +1,13 @@
 <template name="ActiveTask">
 	<div class="row taskitem">
-			<div class="col-xs-4 ">
-				<div class="well">
-						<h6 id="taskName" class="taskName">
-							<i class="glyphicon glyphicon-ok pull-left completetask" data-toggle="completemodal" data-target="#smallTaskModal"></i>
-						    <i class="glyphicon glyphicon-ban-circle pull-left canceltask" data-toggle="cancelmodal" data-target="#smallTaskModal"></i>
-							<i class="glyphicon glyphicon-play pull-left activetask" data-toggle="activemodal" data-target="#smallTaskModal"></i>
-							<i class="glyphicon glyphicon-pause pull-left pendingtask" data-toggle="pendingmodal" data-target="#smallTaskModal"></i>
-							{{taskName}}
-						</h6>
-					
-				</div>
+			<div class="col-xs-2">
+					<i class="glyphicon glyphicon-ok pull-left completetask" data-toggle="completemodal" data-target="#smallTaskModal"></i>
+				    <i class="glyphicon glyphicon-ban-circle pull-left canceltask" data-toggle="cancelmodal" data-target="#smallTaskModal"></i>
+					<i class="glyphicon glyphicon-play pull-left activetask" data-toggle="activemodal" data-target="#smallTaskModal"></i>
+					<i class="glyphicon glyphicon-pause pull-left pendingtask" data-toggle="pendingmodal" data-target="#smallTaskModal"></i>
+			</div>
+			<div class="col-xs-2">
+					<h6 id="taskName" class="taskName">{{taskName}}</h6>
 			</div>	
 			<div class="col-xs-6">
 				<div class="well">

@@ -1,8 +1,3 @@
-Template.ActiveEvent.events({
-	
-});
-
-
 Template.PlanningEvent.events({
 		'click .trashevent': function(evt,tmpl) {
 			Session.set('delete_eventId',tmpl.data._id);
@@ -135,7 +130,50 @@ Template.CompletedEvents.helpers({
 		}
 });
 
+Template.ActiveEvent.events({
+	'click .completeEvent': function(evt,tmpl) {
+		Session.set('complete_eventId',tmpl.data._id);
+		 $('.completeEventModal').modal('show');
+	},
+	'click .complete-event-yes-button': function(evt, tmpl) {
+		var _tmpEventInfo = MegaEvents.findOne(Session.get('complete_eventId'));
+		MegaEvents.update(Session.get('complete_eventId'),{$set: {state:'complete'}});
+		$('.completeEventModal').on('hidden.bs.modal', function() { }).modal('hide');
+    	Session.set('complete_eventId',null);
+		MegaFeed.insert({feedTimeStamp: getTimeStamp(), feedData: "Completed Event: " + _tmpEventInfo.eventName});
+	},
+	'click .complete-event-cancel-button': function(evt, tmpl) {
+			$('.cancelTaskModal').on('hidden.bs.modal', function() { }).modal('hide');
+    	Session.set('cancel_taskId',null);
+	}
+});
+
+
 Template.ActiveEvent.helpers({
+		complete_event: function() {
+				return Session.get('complete_eventId');
+		},
+		targeted_complete_event: function() {
+	 		var targetEvent = MegaEvents.findOne(Session.get('complete_eventId'));
+			if (((typeof targetEvent != "undefined") && (typeof targetEvent.valueOf() == "object")) && (targetEvent.eventName.length > 0 )) {
+				return targetEvent.eventName;	
+			} else {
+				return targetEvent = "No-Name Event";
+			}					
+		},	
+		all_tasks_complete: function() {
+			var percentage; 
+			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();
+			var totalComplete = MegaTasks.find({eventID: this._id, taskStatus: 'completed'}).count();
+			var totalCanceled = MegaTasks.find({eventID: this._id, taskStatus: 'canceled'}).count();
+			var totalTaskCount = totalTaskCount - totalCanceled;
+			percentage = Math.abs(( totalComplete / totalTaskCount) * 100);
+			if (percentage == "100") {
+				return true;
+			} else {
+				return false;
+			}
+		},
 		complete_percentage: function() {
 			var percentage; 
 			var totalTaskCount = MegaTasks.find({eventID: this._id}).count();

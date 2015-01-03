@@ -12,7 +12,7 @@ Session.setDefault('cancel_taskId',null);
 Session.setDefault('complete_taskId',null);
 Session.setDefault('active_taskId',null);
 Session.setDefault('pending_taskId',null);
-
+Session.setDefault('complete_eventId',null)
 
 
 Alerts.defaultOptions.alertsLimit = 1;

@@ -113,7 +113,13 @@
 <div class="row eventitem">
 		<div class="col-xs-3 ">
 			<div class="well">
-				<h5 id="eventName" class="eventName">{{eventName}}</h5>
+				{{#if all_tasks_complete}}
+					<h5 id="eventName" class="eventName">  {{eventName}}
+						<i class="glyphicon glyphicon-floppy-open pull-left completeEvent" data-toggle="completeEventModal" data-target="#smallActivateModal"></i>
+					</h5>
+				{{else}}				
+					<h5 id="eventName" class="eventName">{{eventName}}</h5>
+				{{/if}}
 			</div>
 		</div>	
 		<div class="col-xs-9">
@@ -138,4 +144,26 @@
 			
 		</div>
 </div>
+
+	<div class="modal fade completeEventModal" id="smallCompleteEventModal" tabindex="-1" role="dialog" aria-labelledby="smallCompleteEventModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="completeEventModal" aria-hidden="true"></button>
+	            <h4 class="modal-title" id="completeEventModalLabel">Complete Event</h4>
+	            </div>
+	            <div class="modal-body">
+	                <h3>Are you sure you want to complete event: {{targeted_complete_event}}</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default complete-event-cancel-button" data-dismiss="completeEventModal">Cancel</button>
+	                <button type="button" class="btn btn-primary complete-event-yes-button">Complete Event</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+
+
+
+
 </template>
